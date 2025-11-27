@@ -2,6 +2,7 @@
 
 echo "$0"
 echo "$1"   # new logdir name and new traindir name
+echo "$2"   # number of repetitions
 
 run_interruptible() {
     "$@" &
@@ -15,7 +16,11 @@ run_interruptible() {
 }
 
 
-run_interruptible ./orca-standalone-emulation.sh 44444
+for ((i = 1; i <= $2; i++)); do
+    echo "===== Run $i of $2 ====="
+
+    run_interruptible ./orca-standalone-emulation.sh 44444
+done
 
 cd rl-module || exit 1
 
@@ -23,4 +28,3 @@ mv log "${1}_log"
 mv train_dir "${1}_train_dir"
 
 mkdir log
-

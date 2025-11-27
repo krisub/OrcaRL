@@ -294,8 +294,8 @@ class TCP_Env_Wrapper(object):
                 delay_metric=1
 
             # logarithmic reward
-            alpha = 10.0
-            beta = 100.0
+            alpha = 20.0 # 10
+            beta = 50.0 # 100
             gamma = 200.0
 
             safe_thr = max(thr_n_min, 1e-5)
