@@ -293,18 +293,21 @@ class TCP_Env_Wrapper(object):
             else:
                 delay_metric=1
 
-            # logarithmic reward
-            alpha = 20.0 # 10
-            beta = 50.0 # 100
-            gamma = 200.0
+            use_log_reward = True
+       
+            if use_log_reward:     
+	    	# logarithmic reward
+            	alpha = 20.0 # 10
+            	beta = 50.0 # 100
+            	gamma = 200.0
 
-            safe_thr = max(thr_n_min, 1e-5)
-            safe_lat = max(srtt_ms_min, 1.0) 
+            	safe_thr = max(thr_n_min, 1e-5)
+            	safe_lat = max(srtt_ms_min, 1.0) 
 
-            reward = alpha * np.log(safe_thr) - beta * (safe_lat / 1000.0) - gamma * loss_rate_n_min
-
-            # original reward
-            # reward  = (thr_n_min-5*loss_rate_n_min)/self.max_bw*delay_metric
+            	reward = alpha * np.log(safe_thr) - beta * (safe_lat / 1000.0) - gamma * loss_rate_n_min
+            else:
+            	# original reward
+            	reward  = (thr_n_min-5*loss_rate_n_min)/self.max_bw*delay_metric
 
             if self.max_bw!=0:
                 state[0]=thr_n_min/self.max_bw

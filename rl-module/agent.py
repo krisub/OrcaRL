@@ -54,16 +54,39 @@ class Actor():
     def build(self, s, is_training):
 
         with tf.variable_scope(self.name, reuse=tf.AUTO_REUSE):
+            
+            use_lstm = True
+            
+            if use_lstm:
+                # reshape input: [Batch, History_Steps, Features_Per_Step]
+                # input 's' is flattened (dim = state_dim * rec_dim)
+                # hardcode '10' here because 'rec_dim' is 10 in params.json
+                steps = 10 
+                feat = self.s_dim // steps
+                s_reshaped = tf.reshape(s, [-1, steps, feat])
 
-            h1 = tf.layers.dense(s, units=self.h1_shape, name='fc1')
-            h1 = tf.layers.batch_normalization(h1, training=is_training, scale=False)
-            h1 = tf.nn.leaky_relu(h1)
+                # lstm layer with 128 units
+                lstm_cell = tf.nn.rnn_cell.LSTMCell(num_units=128, name='lstm_cell')
 
-            h2 = tf.layers.dense(h1, units=self.h2_shape,  name='fc2')
-            h2 = tf.layers.batch_normalization(h2, training=is_training, scale=False)
-            h2 = tf.nn.leaky_relu(h2)
+                # 'outputs' contains the hidden state at every time step
+                outputs, _ = tf.nn.dynamic_rnn(cell=lstm_cell, inputs=s_reshaped, dtype=tf.float32)
 
-            output = tf.layers.dense(h2, units=self.a_dim, activation=tf.nn.tanh)
+                # take the LAST output (the most recent thought)
+                # this represents the agent's summary of the entire history
+                lstm_last = outputs[:, -1, :]
+
+                # output layer (action)
+                output = tf.layers.dense(lstm_last, units=self.a_dim, activation=tf.nn.tanh)
+            else:
+                h1 = tf.layers.dense(s, units=self.h1_shape, name='fc1')
+                h1 = tf.layers.batch_normalization(h1, training=is_training, scale=False)
+                h1 = tf.nn.leaky_relu(h1)
+
+                h2 = tf.layers.dense(h1, units=self.h2_shape,  name='fc2')
+                h2 = tf.layers.batch_normalization(h2, training=is_training, scale=False)
+                h2 = tf.nn.leaky_relu(h2)
+
+                output = tf.layers.dense(h2, units=self.a_dim, activation=tf.nn.tanh)
 
             scale_output = tf.multiply(output, self.action_scale)
 
@@ -409,3 +432,4 @@ class Agent():
     def get_step_epochs(self):
 
         return self.sess.run(self.step_epochs)
+
