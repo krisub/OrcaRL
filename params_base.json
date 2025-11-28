@@ -23,7 +23,7 @@
     "max_epochs": 1000000,
     "eval_frequency": 1000,
     "state_dim": 7,
-    "input_dim": 15,
+    "input_dim": 16,
     "action_dim": 1,
     "delay_margin_coef": 1.25,
     "remote": true,
