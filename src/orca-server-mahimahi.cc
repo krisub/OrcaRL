@@ -533,6 +533,12 @@ void* CntThread(void* information)
                     }
                   }
 
+                  bool use_dynamic_mtp = True
+
+                  if (!use_dynamic_mtp) {
+                      report_period = 20;
+		  }
+
                   ret1 = setsockopt(sock_for_cnt[i], IPPROTO_TCP,TCP_CWND, &target_ratio, sizeof(target_ratio));
                   if(ret1<0)
                   {
