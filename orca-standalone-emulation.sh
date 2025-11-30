@@ -32,8 +32,9 @@ then
     qs=$((2*bdp))
 
     # For the Step-scenraio, you can use follwoing parameters:
-    downl="step-10s-3-level"
-    qs=1000
+    downl="ATT-LTE-driving-2016.down"
+    upl="ATT-LTE-driving-2016.up"
+    # qs=1000
     eval_duration=60
 
     ./actor.sh ${act_port} $epoch ${first_time} $scheme_ $dir $act_id $downl $upl $del $eval_duration $qs 0 &
