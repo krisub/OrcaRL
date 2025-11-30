@@ -533,7 +533,7 @@ void* CntThread(void* information)
                     }
                   }
 
-                  bool use_dynamic_mtp = True
+                  bool use_dynamic_mtp = true;
 
                   if (!use_dynamic_mtp) {
                       report_period = 20;
