@@ -122,7 +122,7 @@ def main():
     plt.ylabel("Sending Rate (Mbps)", fontsize=12)
     plt.title(f"Sending Rate Comparison (Bin Size: {bin_size}ms)", fontsize=14)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend(loc='upper left', fontsize=10)
+    plt.legend(loc='upper left', bbox_to_anchor=(0.02,0.98), fontsize=10)
     plt.xlim(left=0)
     plt.ylim(bottom=0)
     
