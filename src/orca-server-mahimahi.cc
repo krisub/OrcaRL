@@ -348,7 +348,8 @@ void* TimerThread(void* information)
 }
 void* CntThread(void* information)
 {
-/*    struct sched_param param;
+	/*
+	struct sched_param param;
     param.__sched_priority=sched_get_priority_max(SCHED_RR);
     int policy=SCHED_RR;
     int s = pthread_setschedparam(pthread_self(), policy, &param);
@@ -363,6 +364,10 @@ void* CntThread(void* information)
         DBGPRINT(0,0,"Cannot get priority for the Data thread: %s\n",strerror(errno));
     }
     */
+	bool use_orca = false;
+	if (!use_orca) {
+		return ((void *)0); // simulate incompatible kernel
+	}
 	int ret1;
     double min_rtt_=0.0;
     double pacing_rate=0.0;
@@ -715,5 +720,6 @@ void* DataThread(void* info)
     DBGPRINT(DBGSERVER,1,"done\n");
 	return((void *)0);
 }
+
 
 
