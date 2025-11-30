@@ -55,7 +55,7 @@ class Actor():
 
         with tf.variable_scope(self.name, reuse=tf.AUTO_REUSE):
             
-            use_lstm = False
+            use_lstm = True
             
             if use_lstm:
                 # reshape input: [Batch, History_Steps, Features_Per_Step]

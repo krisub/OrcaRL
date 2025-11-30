@@ -295,7 +295,7 @@ class TCP_Env_Wrapper(object):
             else:
                 delay_metric=1
 
-            use_log_reward = False
+            use_log_reward = True
        
             if use_log_reward:     
 	    	# logarithmic reward
