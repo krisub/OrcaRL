@@ -1,282 +1,184 @@
---- Results for baseline_cubic ---
-Average Total CPU Usage: 3.07% (of one core)
-  - User Space (Agent/Server): 3.07%
-  - Kernel Space (TCP Stack):  0.00%
-
 Linux 6.16.4-g6a84fbc45f49 (ubuntu) 	11/30/2025 	_x86_64_	(16 CPU)
 
-08:35:20 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:21 PM  1000      8658    7.92    1.98    0.00    0.00    9.90    10  python
-08:35:21 PM  1000      8817    0.00    0.99    0.00    0.00    0.99     2  client
+10:01:08 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:09 PM  1000       796    0.99    0.99    0.00    0.00    1.98     4  python
 
-08:35:21 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:22 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:22 PM  1000      8658    7.00    1.00    0.00    0.00    8.00    14  python
+10:01:09 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:10 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:22 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:23 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:23 PM  1000      8658    6.00    2.00    0.00    0.00    8.00    10  python
-08:35:23 PM  1000      8817    0.00    1.00    0.00    0.00    1.00    14  client
+10:01:10 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:11 PM  1000       796    2.00    1.00    0.00    0.00    3.00     4  python
 
-08:35:23 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:24 PM  1000      8658    6.00    0.00    0.00    0.00    6.00    10  python
-08:35:24 PM  1000      8817    0.00    1.00    0.00    0.00    1.00    14  client
+10:01:11 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:12 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:24 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:25 PM  1000      8658    7.00    1.00    0.00    0.00    8.00    14  python
-08:35:25 PM  1000      8817    0.00    1.00    0.00    0.00    1.00    15  client
+10:01:12 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:13 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:25 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:26 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:26 PM  1000      8658    6.00    0.00    0.00    0.00    6.00    14  python
-08:35:26 PM  1000      8817    1.00    1.00    0.00    0.00    2.00    15  client
+10:01:13 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:14 PM  1000       796    1.00    1.00    0.00    0.00    2.00     4  python
 
-08:35:26 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:27 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    14  python
-08:35:27 PM  1000      8817    0.00    1.00    0.00    0.00    1.00    15  client
+10:01:14 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:15 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:27 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:28 PM  1000      8658    6.00    1.00    0.00    0.00    7.00    14  python
-08:35:28 PM  1000      8817    0.00    2.00    0.00    0.00    2.00    11  client
+10:01:15 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:16 PM  1000       796    1.00    1.00    0.00    0.00    2.00     4  python
 
-08:35:28 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:29 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:29 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    14  python
-08:35:29 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    11  client
+10:01:16 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:17 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:29 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:30 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    10  python
-08:35:30 PM  1000      8817    1.00    2.00    0.00    0.00    3.00    11  client
+10:01:17 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:18 PM  1000       796    2.00    1.00    0.00    0.00    3.00     4  python
 
-08:35:30 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:31 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:31 PM  1000      8658    7.00    0.00    0.00    0.00    7.00    10  python
-08:35:31 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    15  client
+10:01:18 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:19 PM  1000       796    1.00    0.00    0.00    0.00    1.00     4  python
 
-08:35:31 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:32 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:32 PM  1000      8817    0.00    2.00    0.00    0.00    2.00    15  client
+10:01:19 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:20 PM  1000       796    2.00    1.00    0.00    0.00    3.00     4  python
 
-08:35:32 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:33 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:33 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    10  python
-08:35:33 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    13  client
+10:01:20 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:21 PM  1000       796    1.00    0.00    0.00    0.00    1.00     4  python
 
-08:35:33 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:34 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    14  python
-08:35:34 PM  1000      8817    1.00    1.00    0.00    0.00    2.00    13  client
+10:01:21 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:22 PM  1000       796    1.98    0.99    0.00    0.00    2.97     4  python
 
-08:35:34 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:35 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:35 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:35 PM  1000      8817    1.00    3.00    0.00    0.00    4.00    11  client
+10:01:22 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:23 PM  1000       796    2.00    0.00    0.00    0.00    2.00     4  python
 
-08:35:35 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:36 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:36 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    12  python
-08:35:36 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    11  client
+10:01:23 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:24 PM  1000       796    1.00    1.00    0.00    0.00    2.00     4  python
 
-08:35:36 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:37 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    12  python
-08:35:37 PM  1000      8817    0.00    2.00    0.00    0.00    2.00    11  client
+10:01:24 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:25 PM  1000       796    2.00    1.00    0.00    0.00    3.00     4  python
 
-08:35:37 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:38 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:38 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    12  python
-08:35:38 PM  1000      8817    0.00    4.00    0.00    0.00    4.00     1  client
+10:01:25 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:26 PM  1000       796    0.99    0.00    0.00    0.00    0.99     3  python
 
-08:35:38 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:39 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:39 PM  1000      8817    0.00    4.00    0.00    0.00    4.00     1  client
+10:01:26 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:27 PM  1000       796    1.98    0.99    0.00    0.00    2.97     3  python
 
-08:35:39 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:40 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:40 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    12  python
-08:35:40 PM  1000      8817    1.00    2.00    0.00    0.00    3.00    13  client
+10:01:27 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:28 PM  1000       796    1.98    0.00    0.00    0.00    1.98     3  python
 
-08:35:40 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:41 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:41 PM  1000      8658    4.00    0.00    0.00    0.00    4.00    10  python
-08:35:41 PM  1000      8817    0.00    4.00    0.00    0.00    4.00    13  client
+10:01:28 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:29 PM  1000       796    1.00    1.00    0.00    0.00    2.00     3  python
 
-08:35:41 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:42 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:42 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:42 PM  1000      8817    1.00    3.00    0.00    0.00    4.00    13  client
+10:01:29 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:30 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:35:42 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:43 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:43 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    10  python
-08:35:43 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    13  client
+10:01:30 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:31 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:35:43 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:44 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:44 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:44 PM  1000      8817    0.00    3.00    0.00    0.00    3.00    13  client
+10:01:31 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:32 PM  1000       796    1.00    0.00    0.00    0.00    1.00     1  python
 
-08:35:44 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:45 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:45 PM  1000      8658    4.00    0.00    0.00    0.00    4.00    10  python
-08:35:45 PM  1000      8817    0.00    4.00    0.00    0.00    4.00     1  client
+10:01:32 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:33 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:35:45 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:46 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:46 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    10  python
-08:35:46 PM  1000      8817    1.00    3.00    0.00    0.00    4.00     1  client
+10:01:33 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:34 PM  1000       796    1.98    0.99    0.00    0.00    2.97     1  python
 
-08:35:46 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:47 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:47 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:35:47 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     1  client
+10:01:34 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:35 PM  1000       796    1.00    0.00    0.00    0.00    1.00     1  python
 
-08:35:47 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:48 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:48 PM  1000      8658    6.00    1.00    0.00    0.00    7.00    13  python
-08:35:48 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     1  client
+10:01:35 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:36 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:35:48 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:49 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    13  python
-08:35:49 PM  1000      8817    1.00    1.00    0.00    0.00    2.00     1  client
+10:01:36 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:37 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:35:49 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:50 PM  1000      8658    6.00    0.00    0.00    0.00    6.00    13  python
-08:35:50 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     1  client
+10:01:37 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:38 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:35:50 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:51 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:51 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    13  python
-08:35:51 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     1  client
+10:01:38 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:39 PM  1000       796    1.00    1.00    0.00    0.00    2.00     1  python
 
-08:35:51 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:52 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    13  python
-08:35:52 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     0  client
+10:01:39 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:40 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:35:52 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:53 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:53 PM  1000      8658    6.00    1.00    0.00    0.00    7.00    13  python
-08:35:53 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     0  client
+10:01:40 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:41 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:35:53 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:54 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    14  python
-08:35:54 PM  1000      8817    0.00    2.00    0.00    0.00    2.00     0  client
+10:01:41 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:42 PM  1000       796    2.00    1.00    0.00    0.00    3.00     3  python
 
-08:35:54 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:55 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:35:55 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    15  python
-08:35:55 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     0  client
+10:01:42 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:43 PM  1000       796    1.00    0.00    0.00    0.00    1.00     3  python
 
-08:35:55 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:56 PM  1000      8658    6.00    0.00    0.00    0.00    6.00    15  python
-08:35:56 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     0  client
+10:01:43 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:44 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:35:56 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:57 PM  1000      8658    6.00    1.00    0.00    0.00    7.00    14  python
-08:35:57 PM  1000      8817    1.00    1.00    0.00    0.00    2.00     2  client
+10:01:44 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:45 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:35:57 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:58 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:35:58 PM  1000      8658    4.00    0.00    0.00    0.00    4.00    14  python
-08:35:58 PM  1000      8817    1.00    2.00    0.00    0.00    3.00     0  client
+10:01:45 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:46 PM  1000       796    1.00    1.00    0.00    0.00    2.00     3  python
 
-08:35:58 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:35:59 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    14  python
-08:35:59 PM  1000      8817    0.00    2.00    0.00    0.00    2.00     0  client
+10:01:46 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:47 PM  1000       796    1.98    0.00    0.00    0.00    1.98     3  python
 
-08:35:59 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:00 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:00 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    14  python
-08:36:00 PM  1000      8817    1.00    2.00    0.00    0.00    3.00     0  client
+10:01:47 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:48 PM  1000       796    2.00    0.00    0.00    0.00    2.00     3  python
 
-08:36:00 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:01 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:01 PM  1000      8658    5.00    1.00    0.00    0.00    6.00    14  python
-08:36:01 PM  1000      8817    1.00    2.00    0.00    0.00    3.00     0  client
+10:01:48 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:49 PM  1000       796    2.00    1.00    0.00    0.00    3.00     3  python
 
-08:36:01 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:02 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    14  python
-08:36:02 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:01:49 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:50 PM  1000       796    1.00    0.00    0.00    0.00    1.00     3  python
 
-08:36:02 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:03 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:03 PM  1000      8658    5.00    0.00    0.00    0.00    5.00     1  python
-08:36:03 PM  1000      8817    1.00    2.00    0.00    0.00    3.00     2  client
+10:01:50 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:51 PM  1000       796    2.00    1.00    0.00    0.00    3.00     3  python
 
-08:36:03 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:04 PM  1000      8658    5.00    1.00    0.00    0.00    6.00     9  python
-08:36:04 PM  1000      8817    0.00    2.00    0.00    0.00    2.00     2  client
+10:01:51 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:52 PM  1000       796    1.00    0.00    0.00    0.00    1.00     3  python
 
-08:36:04 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:05 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:05 PM  1000      8658    5.00    0.00    0.00    0.00    5.00     9  python
-08:36:05 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:01:52 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:53 PM  1000       796    2.00    0.00    0.00    0.00    2.00     5  python
 
-08:36:05 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:06 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    10  python
-08:36:06 PM  1000      8817    0.00    2.00    0.00    1.00    2.00     0  client
+10:01:53 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:54 PM  1000       796    2.00    1.00    0.00    0.00    3.00     5  python
 
-08:36:06 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:07 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:07 PM  1000      8658    4.00    1.00    0.00    0.00    5.00    10  python
-08:36:07 PM  1000      8817    0.00    2.00    0.00    0.00    2.00     0  client
+10:01:54 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:55 PM  1000       796    2.00    0.00    0.00    0.00    2.00     5  python
 
-08:36:07 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:08 PM  1000      8658    5.00    0.00    0.00    0.00    5.00     9  python
-08:36:08 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     2  client
+10:01:55 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:56 PM  1000       796    2.00    1.00    0.00    0.00    3.00     5  python
 
-08:36:08 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:09 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:09 PM  1000      8658    5.00    0.00    0.00    0.00    5.00    11  python
-08:36:09 PM  1000      8817    1.00    3.00    0.00    0.00    4.00     2  client
+10:01:56 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:57 PM  1000       796    1.00    0.00    0.00    0.00    1.00     5  python
 
-08:36:09 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:10 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:10 PM  1000      8658    5.00    1.00    0.00    0.00    6.00     2  python
-08:36:10 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:01:57 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:58 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:36:10 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:11 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:11 PM  1000      8658    5.00    0.00    0.00    0.00    5.00     2  python
-08:36:11 PM  1000      8817    1.00    3.00    0.00    0.00    4.00     0  client
+10:01:58 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:01:59 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:36:11 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:12 PM  1000      8656    0.00    1.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:12 PM  1000      8658    7.00    0.00    0.00    0.00    7.00     2  python
-08:36:12 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:01:59 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:00 PM  1000       796    2.00    0.00    0.00    0.00    2.00     1  python
 
-08:36:12 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:13 PM  1000      8656    1.00    0.00    0.00    0.00    1.00     9  orca-server-mah
-08:36:13 PM  1000      8658    7.00    1.00    0.00    0.00    8.00     2  python
-08:36:13 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:02:00 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:01 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:36:13 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:14 PM  1000      8656    0.00    2.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:14 PM  1000      8658    7.00    0.00    0.00    0.00    7.00     2  python
-08:36:14 PM  1000      8817    1.00    3.00    0.00    0.00    4.00     0  client
+10:02:01 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:02 PM  1000       796    1.00    0.00    0.00    0.00    1.00     1  python
 
-08:36:14 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:15 PM  1000      8658    6.00    0.00    0.00    0.00    6.00    11  python
-08:36:15 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     0  client
+10:02:02 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:03 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:36:15 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:16 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:16 PM  1000      8658    5.00    1.00    0.00    0.00    6.00     2  python
-08:36:16 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     1  client
+10:02:03 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:04 PM  1000       796    1.00    0.00    0.00    0.00    1.00     1  python
 
-08:36:16 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:17 PM  1000      8656    1.00    1.00    0.00    0.00    2.00     9  orca-server-mah
-08:36:17 PM  1000      8658    6.00    0.00    0.00    0.00    6.00     2  python
-08:36:17 PM  1000      8817    0.00    3.00    0.00    0.00    3.00     1  client
+10:02:04 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:05 PM  1000       796    2.00    1.00    0.00    0.00    3.00     1  python
 
-08:36:17 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:18 PM  1000      8658    5.00    1.00    0.00    0.00    6.00     2  python
-08:36:18 PM  1000      8817    0.00    1.00    0.00    0.00    1.00     1  client
+10:02:05 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:06 PM  1000       796    2.00    0.00    0.00    0.00    2.00    13  python
 
-08:36:18 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:19 PM  1000      8658    1.00    0.00    0.00    0.00    1.00    11  python
-08:36:19 PM  1000      8817    1.00    1.00    0.00    0.00    2.00     1  client
+10:02:06 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:07 PM  1000       796    2.00    1.00    0.00    0.00    3.00    13  python
 
-08:36:19 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-08:36:20 PM  1000      8658    2.00    0.00    0.00    0.00    2.00    11  python
+10:02:07 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:02:08 PM  1000       796    1.00    0.00    0.00    0.00    1.00    13  python
 
 Average:      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
-Average:     1000      8658    5.15    0.50    0.00    0.00    5.65     -  python
+Average:     1000       796    1.68    0.48    0.00    0.00    2.16     -  python

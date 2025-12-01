@@ -394,7 +394,7 @@ void* CntThread(void* information)
         }
         //Enable orca on this socket:
         //TCP_ORCA_ENABLE
-        int enable_orca=2;
+        int enable_orca=0; // from 2
         if (setsockopt(sock_for_cnt[i], IPPROTO_TCP, TCP_ORCA_ENABLE, &enable_orca, sizeof(enable_orca)) < 0) 
         {
             DBGERROR("CHECK KERNEL VERSION (0514+) ;CANNOT ENABLE ORCA %s\n",strerror(errno));
@@ -538,7 +538,7 @@ void* CntThread(void* information)
                     }
                   }
 
-                  bool use_dynamic_mtp = true; // true for all_mod ONLY
+                  bool use_dynamic_mtp = false; // true for all_mod ONLY
 
                   if (!use_dynamic_mtp) {
                       report_period = 20;

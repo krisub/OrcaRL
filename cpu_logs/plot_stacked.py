@@ -12,8 +12,8 @@ labels = [
 ]
 
 # Data from logs
-user_space   = [5.80, 6.43, 6.02, 5.67, 8.53]
-kernel_space = [3.07, 3.28, 3.43, 3.15, 2.58]
+user_space   = [1.68, 4.35, 6.02, 5.67, 8.53]
+kernel_space = [0.48, 2.18, 3.43, 3.15, 2.58]
 
 # --- PLOTTING ---
 fig, ax = plt.subplots(figsize=(10, 7))
@@ -60,6 +60,6 @@ for i in range(len(labels)):
             ha='center', va='bottom', fontsize=11, fontweight='bold', color='black')
 
 plt.tight_layout()
-output_file = "cpu_stacked_comparison.png"
+output_file = "cpu_stacked_comparison_2.png"
 plt.savefig(output_file, dpi=300)
 print(f"Graph saved to {output_file}")
