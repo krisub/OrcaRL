@@ -364,7 +364,7 @@ void* CntThread(void* information)
         DBGPRINT(0,0,"Cannot get priority for the Data thread: %s\n",strerror(errno));
     }
     */
-	bool use_orca = true;
+	bool use_orca = true; // false for baseline_cubic ONLY
 	if (!use_orca) {
 		return ((void *)0); // simulate incompatible kernel
 	}
@@ -538,7 +538,7 @@ void* CntThread(void* information)
                     }
                   }
 
-                  bool use_dynamic_mtp = false;
+                  bool use_dynamic_mtp = true; // true for all_mod ONLY
 
                   if (!use_dynamic_mtp) {
                       report_period = 20;
