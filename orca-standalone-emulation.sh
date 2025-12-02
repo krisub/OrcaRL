@@ -32,8 +32,8 @@ then
     qs=$((2*bdp))
 
     # For the Step-scenraio, you can use follwoing parameters:
-    # downl="step-10s-3-level"
-    # qs=1000 # visible ONLY during step
+    downl="step-10s-3-level"
+    qs=1000 # visible ONLY during step
 
     eval_duration=60
 
