@@ -1,7 +1,7 @@
 
 Statistics for 4.13 Baseline Cubic:
-Delay (ms) -> min: 24.000, max: 60.000, mean: 42.500, variance: 1.542e+02
-Throughput (Mbps) -> min: 12.010, max: 12.320, mean: 12.172, variance: 8.596e-03
+Delay (ms) -> min: 1862.000, max: 2303.000, mean: 2054.800, variance: 3.697e+04
+Throughput (Mbps) -> min: 12.710, max: 13.080, mean: 12.942, variance: 1.916e-02
 
 Statistics for 4.13 Baseline Orca:
 Delay (ms) -> min: 16.000, max: 73.000, mean: 51.500, variance: 3.589e+02
