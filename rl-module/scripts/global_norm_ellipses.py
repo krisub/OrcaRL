@@ -134,7 +134,7 @@ def main():
     ax.set_xlim(left=0)
     ax.set_ylim(bottom=0)
 
-    plt.savefig("normalized_ellipse.png", dpi=300)
+    plt.savefig("global_normalized_ellipse.png", dpi=300)
     print("Saved normalized_ellipse.png")
 
 if __name__ == "__main__":

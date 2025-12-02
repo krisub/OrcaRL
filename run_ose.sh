@@ -26,7 +26,7 @@ cd rl-module || exit 1
 
 mv log "${1}_log"
 mv train_dir "${1}_train_dir"
-mv "${1}_log" step_all_data
-mv "${1}_train_dir" step_all_data
+mv "${1}_log" w48_all_data/all_multirun
+mv "${1}_train_dir" w48_all_data/all_multirun
 
 mkdir log

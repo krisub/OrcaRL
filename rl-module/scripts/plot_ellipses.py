@@ -153,7 +153,7 @@ def main():
             debug(f"Not enough points to draw ellipse for {label}")
 
     # Axis labels & formatting
-    ax.set_title("Throughput vs. 95th Percentile Latency\nMean + 1σ Covariance Ellipses", fontsize=14)
+    ax.set_title("Throughput vs. 95th Percentile Delay\nMean + 1σ Covariance Ellipses", fontsize=14)
     ax.set_xlabel("95th Percentile Delay (ms) [Lower is Better]", fontsize=12)
     ax.set_ylabel("Throughput (Mbps) [Higher is Better]", fontsize=12)
     ax.grid(True, linestyle='--', alpha=0.6)
