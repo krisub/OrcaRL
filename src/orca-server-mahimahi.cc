@@ -348,7 +348,8 @@ void* TimerThread(void* information)
 }
 void* CntThread(void* information)
 {
-/*    struct sched_param param;
+	/*
+	struct sched_param param;
     param.__sched_priority=sched_get_priority_max(SCHED_RR);
     int policy=SCHED_RR;
     int s = pthread_setschedparam(pthread_self(), policy, &param);
@@ -363,6 +364,10 @@ void* CntThread(void* information)
         DBGPRINT(0,0,"Cannot get priority for the Data thread: %s\n",strerror(errno));
     }
     */
+	bool use_orca = true; // false for baseline_cubic ONLY
+	if (!use_orca) {
+		return ((void *)0); // simulate incompatible kernel
+	}
 	int ret1;
     double min_rtt_=0.0;
     double pacing_rate=0.0;
@@ -389,7 +394,7 @@ void* CntThread(void* information)
         }
         //Enable orca on this socket:
         //TCP_ORCA_ENABLE
-        int enable_orca=2;
+        int enable_orca=2; // from 2
         if (setsockopt(sock_for_cnt[i], IPPROTO_TCP, TCP_ORCA_ENABLE, &enable_orca, sizeof(enable_orca)) < 0) 
         {
             DBGERROR("CHECK KERNEL VERSION (0514+) ;CANNOT ENABLE ORCA %s\n",strerror(errno));
@@ -439,7 +444,7 @@ void* CntThread(void* information)
                     retrans_out=(double)(orca_info.retrans_out);
                     max_packets_out=(double)(orca_info.max_packets_out);
 
-                    report_period=20;
+                    // report_period=20;
                     if (!slow_start_passed)
                         //Just for the first Time
                         slow_start_passed=(orca_info.snd_ssthresh<orca_info.cwnd)?1:0;
@@ -459,10 +464,23 @@ void* CntThread(void* information)
                         }
                         continue;
                     }
-                    sprintf(message,"%d %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f",
+
+                   
+                    char algo_name[32];
+                    socklen_t algo_len = sizeof(algo_name);
+                    // which congestion control is active
+                    if (getsockopt(sock_for_cnt[i], IPPROTO_TCP, TCP_CONGESTION, algo_name, &algo_len) < 0) {
+                        // error getting the algorithm name
+                        strcpy(algo_name, "unknown");
+                    }
+
+                    // 0 if bbr or westwood
+                    double is_orca_active = (strcmp(algo_name, "cubic") == 0) ? 1.0 : 0.0;
+
+                    sprintf(message,"%d %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.7f %.1f",
                             msg_id,delay,(double)orca_info.thr,(double)orca_info.cnt,(double)time_delta,
                             (double)target,(double)orca_info.cwnd, pacing_rate,lost_rate,srtt_ms,snd_ssthresh,packets_out
-                            ,retrans_out,max_packets_out,(double)orca_info.mss,min_rtt_);
+                            ,retrans_out,max_packets_out,(double)orca_info.mss,min_rtt_,is_orca_active);
                     memcpy(shared_memory,message,sizeof(message));
                     if ((duration_steps!=0))
                     {
@@ -509,6 +527,22 @@ void* CntThread(void* information)
                   
                   if (target_ratio<MIN_CWND)
                       target_ratio=MIN_CWND;
+
+                  char *mtp_str = strtok_r(NULL, " ", &save_ptr);
+                  if (mtp_str != NULL) {
+                    int new_mtp = atoi(mtp_str);
+                    if (new_mtp >= 10 && new_mtp <= 500) {
+                      report_period = new_mtp;
+                    } else {
+                      report_period = 20;
+                    }
+                  }
+
+                  bool use_dynamic_mtp = true; // true for all_mod ONLY
+
+                  if (!use_dynamic_mtp) {
+                      report_period = 20;
+		  }
 
                   ret1 = setsockopt(sock_for_cnt[i], IPPROTO_TCP,TCP_CWND, &target_ratio, sizeof(target_ratio));
                   if(ret1<0)
@@ -686,3 +720,6 @@ void* DataThread(void* info)
     DBGPRINT(DBGSERVER,1,"done\n");
 	return((void *)0);
 }
+
+
+

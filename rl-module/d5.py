@@ -45,7 +45,6 @@ def create_input_op_shape(obs, tensor):
     return np.reshape(obs, input_shape)
 
 
-
 def evaluate_TCP(env, agent, epoch, summary_writer, params, s0_rec_buffer, eval_step_counter):
 
 
@@ -75,7 +74,7 @@ def evaluate_TCP(env, agent, epoch, summary_writer, params, s0_rec_buffer, eval_
             eval_step_counter += 1
             step_counter += 1
 
-            s1, r, terminal, error_code = env.step(a, eval_=True)
+            s1, r, terminal, error_code, is_active = env.step(a, eval_=True)
 
             if error_code == True:
                 s1_rec_buffer = np.concatenate( (s0_rec_buffer[params.dict['state_dim']:], s1) )
@@ -121,7 +120,6 @@ def evaluate_TCP(env, agent, epoch, summary_writer, params, s0_rec_buffer, eval_
     return eval_step_counter
 
 
-
 class learner_killer():
 
     def __init__(self, buffer):
@@ -155,7 +153,6 @@ def main():
     parser.add_argument('--job_name', type=str, choices=['learner', 'actor'], required=True, help='Job name: either {\'learner\', actor}')
     parser.add_argument('--task', type=int, required=True, help='Task id')
 
-
     ## parameters from parser
     global config
     global params
@@ -163,7 +160,6 @@ def main():
 
     ## parameters from file
     params = Params(os.path.join(config.base_path,'params.json'))
-
 
     if params.dict['single_actor_eval']:
         local_job_device = ''
@@ -182,9 +178,7 @@ def main():
 
         global_variable_device = shared_job_device + '/cpu'
 
-
         def is_actor_fn(i): return config.job_name == 'actor' and i == config.task
-
 
         if params.dict['remote']:
             cluster = tf.train.ClusterSpec({
@@ -197,12 +191,9 @@ def main():
                     'learner': ['localhost:8000']
                 })
 
-
         server = tf.train.Server(cluster, job_name=config.job_name,
                                 task_index=config.task)
         filters = [shared_job_device, local_job_device]
-
-
 
     if params.dict['use_TCP']:
         env_str = "TCP"
@@ -212,8 +203,6 @@ def main():
         env_str = 'YourEnvironment'
         env_peek =  Env_Wrapper(env_str)
 
-
-
     s_dim, a_dim = env_peek.get_dims_info()
     action_scale, action_range = env_peek.get_action_info()
 
@@ -222,10 +211,8 @@ def main():
     if params.dict['recurrent']:
         s_dim = s_dim * params.dict['rec_dim']
 
-
     if params.dict['use_hard_target'] == True:
         params.dict['tau'] = 1.0
-
 
     with tf.Graph().as_default(),\
         tf.device(local_job_device + '/cpu'):
@@ -254,7 +241,6 @@ def main():
             shapes = [[s_dim], [a_dim], [1], [s_dim], [1]]
             queue = tf.FIFOQueue(10000, dtypes, shapes, shared_name="rp_buf")
 
-
         if is_learner:
             with tf.device(params.dict['device']):
                 agent.build_learn()
@@ -268,26 +254,24 @@ def main():
 
             _killsignal = learner_killer(agent.rp_buffer)
 
-
         for i in range(params.dict['num_actors']):
-                if is_actor_fn(i):
-                    if params.dict['use_TCP']:
-                        shrmem_r = sysv_ipc.SharedMemory(config.mem_r)
-                        shrmem_w = sysv_ipc.SharedMemory(config.mem_w)
-                        env = TCP_Env_Wrapper(env_str, params, config=config, for_init_only=False, shrmem_r=shrmem_r, shrmem_w=shrmem_w,use_normalizer=params.dict['use_normalizer'])
-                    else:
-                        env = GYM_Env_Wrapper(env_str, params)
+            if is_actor_fn(i):
+                if params.dict['use_TCP']:
+                    shrmem_r = sysv_ipc.SharedMemory(config.mem_r)
+                    shrmem_w = sysv_ipc.SharedMemory(config.mem_w)
+                    env = TCP_Env_Wrapper(env_str, params, config=config, for_init_only=False, shrmem_r=shrmem_r, shrmem_w=shrmem_w,use_normalizer=params.dict['use_normalizer'])
+                else:
+                    env = GYM_Env_Wrapper(env_str, params)
 
-                    a_s0 = tf.placeholder(tf.float32, shape=[s_dim], name='a_s0')
-                    a_action = tf.placeholder(tf.float32, shape=[a_dim], name='a_action')
-                    a_reward = tf.placeholder(tf.float32, shape=[1], name='a_reward')
-                    a_s1 = tf.placeholder(tf.float32, shape=[s_dim], name='a_s1')
-                    a_terminal = tf.placeholder(tf.float32, shape=[1], name='a_terminal')
-                    a_buf = [a_s0, a_action, a_reward, a_s1, a_terminal]
+                a_s0 = tf.placeholder(tf.float32, shape=[s_dim], name='a_s0')
+                a_action = tf.placeholder(tf.float32, shape=[a_dim], name='a_action')
+                a_reward = tf.placeholder(tf.float32, shape=[1], name='a_reward')
+                a_s1 = tf.placeholder(tf.float32, shape=[s_dim], name='a_s1')
+                a_terminal = tf.placeholder(tf.float32, shape=[1], name='a_terminal')
+                a_buf = [a_s0, a_action, a_reward, a_s1, a_terminal]
 
-
-                    with tf.device(shared_job_device):
-                        actor_op.append(queue.enqueue(a_buf))
+                with tf.device(shared_job_device):
+                    actor_op.append(queue.enqueue(a_buf))
 
         if is_learner:
             Dequeue_Length = params.dict['dequeue_length']
@@ -321,7 +305,6 @@ def main():
                     hooks=None)
 
         agent.assign_sess(mon_sess)
-
 
         if is_learner:
 
@@ -368,73 +351,127 @@ def main():
 
                 counter += 1
 
-
         else:
+            start = time.time()
+            step_counter = np.int64(0)
+            eval_step_counter = np.int64(0)
+            s0 = env.reset()
+            s0_rec_buffer = np.zeros([s_dim])
+            s1_rec_buffer = np.zeros([s_dim])
+            s0_rec_buffer[-1*params.dict['state_dim']:] = s0
+
+            if params.dict['recurrent']:
+                a = agent.get_action(s0_rec_buffer,not config.eval)
+            else:
+                a = agent.get_action(s0, not config.eval)
+            a = a[0][0]
+            env.write_action(a)
+            epoch = 0
+            ep_r = 0.0
+            start = time.time()
+            while True:
                 start = time.time()
-                step_counter = np.int64(0)
-                eval_step_counter = np.int64(0)
-                s0 = env.reset()
-                s0_rec_buffer = np.zeros([s_dim])
-                s1_rec_buffer = np.zeros([s_dim])
-                s0_rec_buffer[-1*params.dict['state_dim']:] = s0
+                epoch += 1
 
+                step_counter += 1
+                s1, r, terminal, error_code, is_active = env.step(a,eval_=config.eval)
 
-                if params.dict['recurrent']:
-                    a = agent.get_action(s0_rec_buffer,not config.eval)
-                else:
-                    a = agent.get_action(s0, not config.eval)
-                a = a[0][0]
-                env.write_action(a)
-                epoch = 0
-                ep_r = 0.0
-                start = time.time()
-                while True:
-                    start = time.time()
-                    epoch += 1
+                if error_code == True:
+                    s1_rec_buffer = np.concatenate( (s0_rec_buffer[params.dict['state_dim']:], s1) )
 
-                    step_counter += 1
-                    s1, r, terminal, error_code = env.step(a,eval_=config.eval)
-
-                    if error_code == True:
-                        s1_rec_buffer = np.concatenate( (s0_rec_buffer[params.dict['state_dim']:], s1) )
-
-                        if params.dict['recurrent']:
+                    if is_active == 1.0:
+                        # ORCA IS ACTIVE:
+                        if params.dict["recurrent"]:
                             a1 = agent.get_action(s1_rec_buffer, not config.eval)
                         else:
-                            a1 = agent.get_action(s1,not config.eval)
+                            a1 = agent.get_action(s1, not config.eval)
 
                         a1 = a1[0][0]
-
-
                         env.write_action(a1)
 
+                        # store ONLY if Orca was active
+                        if params.dict["recurrent"]:
+                            fd = {
+                                a_s0: s0_rec_buffer,
+                                a_action: a,
+                                a_reward: np.array([r]),
+                                a_s1: s1_rec_buffer,
+                                a_terminal: np.array([terminal], np.float),
+                            }
+                        else:
+                            fd = {
+                                a_s0: s0,
+                                a_action: a,
+                                a_reward: np.array([r]),
+                                a_s1: s1,
+                                a_terminal: np.array([terminal], np.float),
+                            }
+
+                        if not config.eval:
+                            mon_sess.run(actor_op, feed_dict=fd)
+
                     else:
-                        print("TaskID:"+str(config.task)+"Invalid state received...\n")
-                        env.write_action(a)
-                        continue
+                        # kernel is driving (BBR/Westwood)
+                        # kip mon_sess but update the buffer/state
+                        if params.dict["recurrent"]:
+                            a1 = agent.get_action(
+                                s1_rec_buffer, False
+                            )
+                        else:
+                            a1 = agent.get_action(s1, False)
 
-                    if params.dict['recurrent']:
-                        fd = {a_s0:s0_rec_buffer, a_action:a, a_reward:np.array([r]), a_s1:s1_rec_buffer, a_terminal:np.array([terminal], np.float)}
-                    else:
-                        fd = {a_s0:s0, a_action:a, a_reward:np.array([r]), a_s1:s1, a_terminal:np.array([terminal], np.float)}
+                        a1 = a1[0][0]
+                        env.write_action(a1)
 
-                    if not config.eval:
-                        mon_sess.run(actor_op, feed_dict=fd)
+                    # if params.dict['recurrent']:
+                    #     a1 = agent.get_action(s1_rec_buffer, not config.eval)
+                    # else:
+                    #     a1 = agent.get_action(s1,not config.eval)
 
-                    s0 = s1
-                    a = a1
-                    if params.dict['recurrent']:
-                        s0_rec_buffer = s1_rec_buffer
+                    # a1 = a1[0][0]
 
-                    if not params.dict['use_TCP'] and (terminal):
-                        if agent.actor_noise != None:
-                            agent.actor_noise.reset()
+                    # env.write_action(a1)
 
-                    if (epoch% params.dict['eval_frequency'] == 0):
-                        eval_step_counter = evaluate_TCP(env, agent, epoch, summary_writer, params, s0_rec_buffer, eval_step_counter)
+                else:
+                    print("TaskID:"+str(config.task)+"Invalid state received...\n")
+                    env.write_action(a)
+                    continue
 
+                if params.dict['recurrent']:
+                    fd = {a_s0:s0_rec_buffer, a_action:a, a_reward:np.array([r]), a_s1:s1_rec_buffer, a_terminal:np.array([terminal], np.float)}
+                else:
+                    fd = {
+                        a_s0: s0,
+                        a_action: a,
+                        a_reward: np.array([r]),
+                        a_s1: s1,
+                        a_terminal: np.array([terminal], np.float),
+                    }
 
-                print("total time:", time.time()-start)
+                if not config.eval:
+                    mon_sess.run(actor_op, feed_dict=fd)
+
+                s0 = s1
+                a = a1
+                if params.dict["recurrent"]:
+                    s0_rec_buffer = s1_rec_buffer
+
+                if not params.dict["use_TCP"] and (terminal):
+                    if agent.actor_noise != None:
+                        agent.actor_noise.reset()
+
+                if epoch % params.dict["eval_frequency"] == 0:
+                    eval_step_counter = evaluate_TCP(
+                        env,
+                        agent,
+                        epoch,
+                        summary_writer,
+                        params,
+                        s0_rec_buffer,
+                        eval_step_counter,
+                    )
+
+            print("total time:", time.time() - start)
 
 def learner_dequeue_thread(agent,params, mon_sess, dequeue, queuesize_op, Dequeue_Length):
     ct = 0
@@ -456,3 +493,4 @@ def learner_update_thread(agent,params):
 
 if __name__ == "__main__":
     main()
+

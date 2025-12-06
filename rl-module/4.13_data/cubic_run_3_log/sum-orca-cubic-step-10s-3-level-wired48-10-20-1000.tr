@@ -1,0 +1,64 @@
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Can't open /home/krisub/vs-repos/aos-proj/OrcaRL/rl-module/log/down-orca-cubic-step-10s-3-level-wired48-10-20-1000: No such file or directory at /home/krisub/vs-repos/aos-proj/OrcaRL/rl-module/mm-thr line 42.
+Must have at least one event at /home/krisub/vs-repos/aos-proj/OrcaRL/rl-module/mm-thr line 150.
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.10 Mbits/s
+Average throughput: 13.08 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1862 ms
+Average per packet delay: 631 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.08 Mbits/s
+Average throughput: 13.06 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1891 ms
+Average per packet delay: 632 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.07 Mbits/s
+Average throughput: 13.05 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1868 ms
+Average per packet delay: 604 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.05 Mbits/s
+Average throughput: 13.03 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1899 ms
+Average per packet delay: 604 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 12.86 Mbits/s
+Average throughput: 12.85 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 2271 ms
+Average per packet delay: 682 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 12.84 Mbits/s
+Average throughput: 12.83 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 2303 ms
+Average per packet delay: 683 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 12.74 Mbits/s
+Average throughput: 12.73 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 2290 ms
+Average per packet delay: 645 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 12.72 Mbits/s
+Average throughput: 12.71 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 2289 ms
+Average per packet delay: 646 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.07 Mbits/s
+Average throughput: 13.05 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1922 ms
+Average per packet delay: 669 ms
+------------------------------
+orca-cubic-step-10s-3-level-wired48-10-20-1000
+Average capacity: 13.05 Mbits/s
+Average throughput: 13.03 Mbits/s (99.9% utilization)
+95th percentile per-packet queueing delay: 1953 ms
+Average per packet delay: 670 ms
+------------------------------

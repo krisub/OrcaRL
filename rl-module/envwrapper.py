@@ -154,7 +154,7 @@ class TCP_Env_Wrapper(object):
     def reset(self):
         # start signal
         self.shrmem_w.write(str(99999) + " " + str(99999) + "\0")
-        state, delay_, rew0, error_code  = self.get_state()
+        state, delay_, rew0, error_code, is_active  = self.get_state()
         return state
 
     def test(self):
@@ -233,6 +233,8 @@ class TCP_Env_Wrapper(object):
             max_packets_out=s0[12]
             mss=s0[13]
             min_rtt=s0[14]
+            self.last_rtt_ms = min_rtt
+            is_orca_active=s0[15]
 
             self.local_counter+=1
 
@@ -293,7 +295,21 @@ class TCP_Env_Wrapper(object):
             else:
                 delay_metric=1
 
-            reward  = (thr_n_min-5*loss_rate_n_min)/self.max_bw*delay_metric
+            use_log_reward = True # False for baseline(s) ONLY
+       
+            if use_log_reward:     
+	    	# logarithmic reward
+            	alpha = 20.0 # 10
+            	beta = 50.0 # 100
+            	gamma = 200.0
+
+            	safe_thr = max(thr_n_min, 1e-5)
+            	safe_lat = max(srtt_ms_min, 1.0) 
+
+            	reward = alpha * np.log(safe_thr) - beta * (safe_lat / 1000.0) - gamma * loss_rate_n_min
+            else:
+            	# original reward
+            	reward  = (thr_n_min-5*loss_rate_n_min)/self.max_bw*delay_metric
 
             if self.max_bw!=0:
                 state[0]=thr_n_min/self.max_bw
@@ -312,9 +328,9 @@ class TCP_Env_Wrapper(object):
             state=np.append(state,[delay_metric])
 
             self.prev_rid = rid
-            return state, d, reward, True
+            return state, d, reward, True, is_orca_active
         else:
-            return state, 0.0, reward, False
+            return state, 0.0, reward, False, is_orca_active
 
     def map_action(self, action):
         out = math.pow(4, action)
@@ -330,16 +346,25 @@ class TCP_Env_Wrapper(object):
     def write_action(self, action):
 
         modified_action = self.map_action(action)
+        
+        # strategy: set MTP to roughly 1.0x to 1.5x the RTT.
+        # This ensures we see at least one full feedback loop before deciding again.
 
-        msg = str(self.wid)+" "+str(modified_action)+"\0"
+        # access min_rtt (stored from get_state). 
+        current_rtt_ms = getattr(self, 'last_rtt_ms', 20.0) 
+
+        optimal_mtp = int(current_rtt_ms)
+        optimal_mtp = max(20, min(optimal_mtp, 100))
+
+        msg = str(self.wid)+" "+str(modified_action)+" "+ str(optimal_mtp) +"\0"
         self.shrmem_w.write(msg)
         self.wid = (self.wid + 1) % 1000
         pass
 
     def step(self, action, eval_=False):
-        s1, delay_, rew0, error_code  = self.get_state(evaluation=eval_)
+        s1, delay_, rew0, error_code, is_active  = self.get_state(evaluation=eval_)
 
-        return s1, rew0, False, error_code
+        return s1, rew0, False, error_code, is_active
 
 
 class Moving_Win():
@@ -454,4 +479,5 @@ class Normalizer():
         else:
             print("stats file is missing when loading")
             return False
+
 

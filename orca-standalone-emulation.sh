@@ -33,7 +33,8 @@ then
 
     # For the Step-scenraio, you can use follwoing parameters:
     downl="step-10s-3-level"
-    qs=1000
+    qs=1000 # visible ONLY during step
+
     eval_duration=60
 
     ./actor.sh ${act_port} $epoch ${first_time} $scheme_ $dir $act_id $downl $upl $del $eval_duration $qs 0 &

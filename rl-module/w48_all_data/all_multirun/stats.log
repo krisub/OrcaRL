@@ -1,0 +1,20 @@
+
+Statistics for Baseline Cubic:
+Delay (ms) -> min: 39.000, max: 40.000, mean: 39.900, variance: 9.000e-02
+Throughput (Mbps) -> min: 47.850, max: 47.900, mean: 47.881, variance: 2.490e-04
+
+Statistics for Baseline Orca:
+Delay (ms) -> min: 4.000, max: 15.000, mean: 9.800, variance: 1.496e+01
+Throughput (Mbps) -> min: 38.410, max: 46.910, mean: 44.315, variance: 9.353e+00
+
+Statistics for Modified Reward:
+Delay (ms) -> min: 5.000, max: 15.000, mean: 9.300, variance: 1.081e+01
+Throughput (Mbps) -> min: 40.190, max: 47.000, mean: 44.250, variance: 4.494e+00
+
+Statistics for Modified Reward + MTP + Switching:
+Delay (ms) -> min: 3.000, max: 13.000, mean: 7.200, variance: 1.036e+01
+Throughput (Mbps) -> min: 31.530, max: 47.650, mean: 43.350, variance: 2.529e+01
+
+Statistics for Modified Reward + LSTM:
+Delay (ms) -> min: 2.000, max: 24.000, mean: 10.100, variance: 8.509e+01
+Throughput (Mbps) -> min: 9.010, max: 17.170, mean: 13.914, variance: 4.991e+00
