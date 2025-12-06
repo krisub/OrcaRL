@@ -1,3 +1,30 @@
+# Orca v2.0\! Classic Meets *Even More* Modern: A (Slightly) Pragmatic Learning-Based Congestion Control for the Internet
+
+**This project is based on the findings from the SIGCOMM paper "Classic Meets Modern: A Pragmatic Learning-Based Congestion Control for the Internet" ([https://dl.acm.org/doi/pdf/10.1145/3387514.3405892](https://dl.acm.org/doi/pdf/10.1145/3387514.3405892)). This repository is forked from [https://github.com/Soheil-ab/Orca](https://github.com/Soheil-ab/Orca), which provided scaffolding for our modifications.**
+
+### What We Have Added
+
+This project extends the original Orca implementation with the following key improvements:
+
+  * **Port to Modern Linux Kernel**: We ported the original Orca kernel patches from Linux 4.13 to **Linux Kernel 6.16**, enabling deployment on modern systems.
+  * **Dynamic Algorithm Switching**: We implemented an in-kernel meta-controller that dynamically switches the underlying base congestion control algorithm (e.g., between TCP Cubic, Westwood, and BBR) based on real-time classification of the network environment (Wireless, Datacenter, High-BDP, etc.).
+  * **Dynamic Monitoring Time Period (MTP)**: We replaced the fixed 20ms control loop with a dynamic MTP that adapts to the flow's Round-Trip Time (RTT). This synchronizes the agent's decision frequency with the network's feedback loop, improving stability on high-latency paths.
+  * **Modified Reward Function**: We replaced the original linear reward function with a **logarithmic utility function** ($R = \alpha \log(\text{Throughput}) - \beta \text{Delay} - \gamma \text{Loss}$) to improve stability and fairness.
+
+### Remaining Work
+
+  * Usage of eBPF probes over the creation of the new networking module (DeepCC).
+  * Training and finetuning an LSTM model over the current MLP.
+  * Creating a three-stage model pipeline for MTP prediction, fallback algorithm prediction, and cwnd prediction.
+
+The final project report and presentation slides can be found in `/documentation`. 
+
+
+The Orca 1.0 README ([https://github.com/Soheil-ab/Orca](https://github.com/Soheil-ab/Orca)) is copied below.
+
+-----------
+
+
 # Orca v1.0
 
 This release presents the source code and materials used for the experiments in our SIGCOMM'20 paper: "Classic Meets Modern: A Pragmatic Learning-Based Congestion Control for the Internet" (https://dl.acm.org/doi/abs/10.1145/3387514.3405892).
